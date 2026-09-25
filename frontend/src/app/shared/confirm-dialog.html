@@ -1,0 +1,36 @@
+<dialog
+  #dialog
+  class="confirm-dialog"
+  [attr.aria-labelledby]="headingId"
+  (cancel)="onCancel($event)"
+  (close)="closed.emit()"
+>
+  <h2 class="confirm-dialog__heading" [id]="headingId">{{ heading() }}</h2>
+  <div class="confirm-dialog__body">
+    <ng-content />
+  </div>
+
+  @if (error(); as message) {
+    <p class="confirm-dialog__error" role="alert">{{ message }}</p>
+  }
+
+  <div class="confirm-dialog__actions">
+    <button
+      type="button"
+      class="button button--secondary"
+      autofocus
+      [disabled]="busy()"
+      (click)="close()"
+    >
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="button button--danger"
+      [disabled]="busy()"
+      (click)="confirmed.emit()"
+    >
+      {{ busy() ? 'Working…' : confirmLabel() }}
+    </button>
+  </div>
+</dialog>

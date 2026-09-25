@@ -1,0 +1,43 @@
+<a routerLink="/" class="back-link">← Back to feed</a>
+
+@if (notFound()) {
+  <app-post-not-found />
+} @else if (loadError(); as error) {
+  <app-load-error what="This post" [message]="error.message" (retry)="post.reload()" />
+} @else if (post.hasValue()) {
+  @let current = post.value();
+  <article class="post">
+    <header class="post__header">
+      <h1 class="post__title">{{ current.title }}</h1>
+      <app-post-meta
+        [author]="current.author"
+        [publishedAt]="current.publishedAt"
+        [updatedAt]="current.updatedAt"
+      />
+    </header>
+
+    <div class="post__body">{{ current.body }}</div>
+
+    <div class="post__actions">
+      <a class="button button--secondary" [routerLink]="['/posts', current.id, 'edit']">Edit</a>
+      <button type="button" class="button button--danger-outline" (click)="deleteDialog.open()">
+        Delete
+      </button>
+    </div>
+  </article>
+
+  <app-confirm-dialog
+    #deleteDialog
+    heading="Delete this post?"
+    confirmLabel="Delete post"
+    [busy]="deleting()"
+    [error]="deleteError()"
+    (confirmed)="deletePost(current.id, deleteDialog)"
+    (closed)="deleteError.set(null)"
+  >
+    <p>“{{ current.title }}” will be removed from the feed and its link will stop working.</p>
+    <p>This cannot be undone, other than by resetting all demo data.</p>
+  </app-confirm-dialog>
+} @else {
+  <p class="panel" role="status">Loading post…</p>
+}

@@ -1,0 +1,17 @@
+<a routerLink="/" class="back-link">← Back to feed</a>
+<h1 class="page-title">New post</h1>
+
+@if (authorsError(); as error) {
+  <app-load-error what="The author list" [message]="error.message" (retry)="authors.reload()" />
+} @else if (authors.hasValue()) {
+  <app-post-form
+    submitLabel="Publish"
+    [authors]="authors.value()"
+    [saving]="saving()"
+    [saveError]="saveError()"
+    (save)="publish($event)"
+    (cancel)="cancel()"
+  />
+} @else {
+  <p class="panel" role="status">Loading…</p>
+}

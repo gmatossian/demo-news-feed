@@ -1,0 +1,97 @@
+<form class="post-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <div class="field">
+    @if (fixedAuthor(); as author) {
+      <p class="field__label">Author</p>
+      <p class="field__static">{{ author.name }}</p>
+      <p class="field__hint">The author cannot be changed after publishing.</p>
+    } @else {
+      <label class="field__label" for="post-author">Author</label>
+      <select
+        id="post-author"
+        class="field__control"
+        formControlName="authorId"
+        [attr.aria-invalid]="errorFor('authorId') ? true : null"
+        aria-describedby="post-author-hint post-author-error"
+      >
+        <option [ngValue]="null" disabled>Choose a fictional author</option>
+        @for (author of authors(); track author.id) {
+          <option [ngValue]="author.id">{{ author.name }}</option>
+        }
+      </select>
+      <p class="field__hint" id="post-author-hint">
+        Authors are fictional labels for this demo, not accounts or sign-ins.
+      </p>
+      <p class="field__error" id="post-author-error">{{ errorFor('authorId') }}</p>
+    }
+  </div>
+
+  <div class="field">
+    <div class="field__label-row">
+      <label class="field__label" for="post-title">Title</label>
+      <span
+        class="field__count"
+        id="post-title-count"
+        [class.is-over]="lengthOf('title') > titleMax"
+        >{{ lengthOf('title') }} / {{ titleMax }}</span
+      >
+    </div>
+    <input
+      id="post-title"
+      class="field__control"
+      type="text"
+      formControlName="title"
+      autocomplete="off"
+      [attr.aria-invalid]="errorFor('title') ? true : null"
+      aria-describedby="post-title-count post-title-error"
+    />
+    <p class="field__error" id="post-title-error">{{ errorFor('title') }}</p>
+  </div>
+
+  <div class="field">
+    <div class="field__label-row">
+      <label class="field__label" for="post-body">Text</label>
+      <span class="field__count" id="post-body-count" [class.is-over]="lengthOf('body') > bodyMax"
+        >{{ lengthOf('body') }} / {{ bodyMax }}</span
+      >
+    </div>
+    <textarea
+      id="post-body"
+      class="field__control field__control--body"
+      formControlName="body"
+      rows="12"
+      [attr.aria-invalid]="errorFor('body') ? true : null"
+      aria-describedby="post-body-hint post-body-count post-body-error"
+    ></textarea>
+    <p class="field__hint" id="post-body-hint">
+      Plain text. Line breaks are kept; markup is shown exactly as typed.
+    </p>
+    <p class="field__error" id="post-body-error">{{ errorFor('body') }}</p>
+  </div>
+
+  @if (saveError(); as error) {
+    <div class="post-form__save-error" role="alert">
+      @if (saveUncertain()) {
+        <strong
+          >Couldn’t confirm whether your changes were saved—check the feed before retrying.</strong
+        >
+        Your text is still here.
+      } @else {
+        <strong>Not saved.</strong> {{ error.message }} Your text is still here.
+      }
+    </div>
+  }
+
+  <div class="post-form__actions">
+    <button type="submit" class="button button--primary" [disabled]="saving()">
+      {{ saving() ? 'Saving…' : submitLabel() }}
+    </button>
+    <button
+      type="button"
+      class="button button--secondary"
+      [disabled]="saving()"
+      (click)="cancel.emit()"
+    >
+      Cancel
+    </button>
+  </div>
+</form>

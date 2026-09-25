@@ -1,0 +1,90 @@
+{
+  "authors": [
+    {
+      "id": 1,
+      "name": "Juniper Hale"
+    },
+    {
+      "id": 2,
+      "name": "Otto Brightwater"
+    },
+    {
+      "id": 3,
+      "name": "Priya Lanternfield"
+    },
+    {
+      "id": 4,
+      "name": "Mateo Driftwood"
+    },
+    {
+      "id": 5,
+      "name": "Wren Castellan"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "authorId": 3,
+      "publishedAt": "2026-09-08T08:30:00Z",
+      "updatedAt": null,
+      "title": "Larchmere Library extends Saturday hours",
+      "body": "Starting this month, the Larchmere Library stays open until 5 pm on Saturdays.\n\nThe extra hours come from a volunteer rota organised by the Friends of the Library. If you would like to help shelve returns or run the children's story corner, leave your name at the front desk."
+    },
+    {
+      "id": 2,
+      "authorId": 1,
+      "publishedAt": "2026-09-10T17:45:00Z",
+      "updatedAt": null,
+      "title": "Repair café returns to the old fire station",
+      "body": "Bring your wobbly chairs, silent radios, and jackets with stuck zips. The repair café is back on the first Sunday of each month, 10 am to 1 pm, in the old fire station on Quarry Lane.\n\nRepairs are free. Tea is not, but it is cheap."
+    },
+    {
+      "id": 3,
+      "authorId": 2,
+      "publishedAt": "2026-09-12T12:00:00Z",
+      "updatedAt": "2026-09-12T15:20:00Z",
+      "title": "River path cleanup: 42 volunteers, 19 bags",
+      "body": "Thank you to everyone who turned out on Saturday morning. Between the footbridge and the weir we collected 19 bags of litter, two shopping trolleys, and one surprisingly intact garden gnome.\n\nThe gnome is now at the community centre awaiting its owner.\n\nUpdate: the gnome has been claimed."
+    },
+    {
+      "id": 4,
+      "authorId": 5,
+      "publishedAt": "2026-09-15T07:10:00Z",
+      "updatedAt": null,
+      "title": "Bakery contest adds a rye category",
+      "body": "The autumn bakery contest will include a rye bread category for the first time. Entries close on 30 September. Judging takes place in the market hall, and every entrant gets a slice of everyone else's loaf."
+    },
+    {
+      "id": 5,
+      "authorId": 4,
+      "publishedAt": "2026-09-18T09:00:00Z",
+      "updatedAt": null,
+      "title": "Bike lane pilot on Mill Street starts Monday",
+      "body": "A six-week trial of a protected bike lane on Mill Street begins on Monday. Parking on the east side will be suspended during the trial.\n\nFeedback forms are available at the library and the town hall."
+    },
+    {
+      "id": 6,
+      "authorId": 3,
+      "publishedAt": "2026-09-18T09:00:00Z",
+      "updatedAt": null,
+      "title": "Community choir seeks tenors (and everyone else)",
+      "body": "The Larchmere Community Choir rehearses on Wednesday evenings at St Brigid's hall. No auditions, no experience needed, and reading music is optional.\n\nWe are especially short of tenors, but all voices are welcome."
+    },
+    {
+      "id": 7,
+      "authorId": 1,
+      "publishedAt": "2026-09-21T19:30:00Z",
+      "updatedAt": null,
+      "title": "Weather station on the school roof is online",
+      "body": "Pupils at Larchmere Primary have finished building their rooftop weather station. It records:\n\n- temperature\n- rainfall\n- wind speed and direction\n\nReadings are posted on the noticeboard by the school gate every Friday."
+    },
+    {
+      "id": 8,
+      "authorId": 2,
+      "publishedAt": "2026-09-23T10:15:00Z",
+      "updatedAt": null,
+      "title": "Welcome to the Larchmere demo feed",
+      "body": "This is a demo news feed for learning and practice. Larchmere, its residents, and every post here are fictional, and choosing an author when you write a post is just a label, not a sign-in.\n\nPosts are plain text. Line breaks are kept, and markup such as <b>bold</b> is shown exactly as typed.\n\nUse \"Reset demo data\" at the top of the page to restore these original posts at any time."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+<a class="skip-link" href="#main">Skip to content</a>
+<app-demo-banner />
+<app-site-header />
+
+<main id="main" class="page" tabindex="-1">
+  <div class="notice-region" role="status">
+    @if (notice.message(); as message) {
+      <div class="notice">
+        <span>{{ message }}</span>
+        <button type="button" class="notice__dismiss" (click)="notice.dismiss()">
+          <span aria-hidden="true">×</span>
+          <span class="visually-hidden">Dismiss message</span>
+        </button>
+      </div>
+    }
+  </div>
+  <router-outlet />
+</main>
+
+<footer class="site-footer">
+  <p>Demo news feed for learning and practice. All authors and posts are fictional.</p>
+</footer>

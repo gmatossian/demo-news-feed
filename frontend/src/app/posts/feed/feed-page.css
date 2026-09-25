@@ -1,0 +1,64 @@
+.feed {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.post-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  box-shadow: var(--shadow);
+}
+
+.post-card:hover {
+  border-color: var(--color-border-strong);
+}
+
+.post-card__title {
+  font-size: var(--font-size-large);
+  overflow-wrap: anywhere;
+}
+
+.post-card__title a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+/* The whole card is clickable through the title link. */
+.post-card__title a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+}
+
+.post-card__title a:hover {
+  color: var(--color-accent);
+}
+
+.post-card__title a:focus-visible {
+  outline: none;
+}
+
+.post-card__title a:focus-visible::after {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.post-card__excerpt {
+  color: var(--color-muted);
+  overflow-wrap: anywhere;
+}
+
+.feed__empty-title {
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+  color: var(--color-text);
+}

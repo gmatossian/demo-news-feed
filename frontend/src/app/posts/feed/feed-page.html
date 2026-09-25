@@ -1,0 +1,35 @@
+<h1 class="page-title">Latest posts</h1>
+
+@if (loadError(); as error) {
+  <app-load-error what="The feed" [message]="error.message" (retry)="posts.reload()" />
+} @else if (posts.hasValue()) {
+  @if (posts.value().length === 0) {
+    <div class="panel">
+      <p class="feed__empty-title">No posts yet.</p>
+      <p>
+        <a routerLink="/posts/new">Write the first post</a>, or use “Reset demo data” above to
+        restore the original fictional posts.
+      </p>
+    </div>
+  } @else {
+    <ol class="feed" aria-label="Posts, newest first">
+      @for (post of posts.value(); track post.id) {
+        <li>
+          <article class="post-card">
+            <h2 class="post-card__title">
+              <a [routerLink]="['/posts', post.id]">{{ post.title }}</a>
+            </h2>
+            <app-post-meta
+              [author]="post.author"
+              [publishedAt]="post.publishedAt"
+              [updatedAt]="post.updatedAt"
+            />
+            <p class="post-card__excerpt">{{ post.excerpt }}</p>
+          </article>
+        </li>
+      }
+    </ol>
+  }
+} @else {
+  <p class="panel" role="status">Loading posts…</p>
+}

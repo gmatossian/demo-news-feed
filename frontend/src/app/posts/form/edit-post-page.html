@@ -1,0 +1,22 @@
+@if (notFound()) {
+  <a routerLink="/" class="back-link">← Back to feed</a>
+  <app-post-not-found />
+} @else if (loadError(); as error) {
+  <a routerLink="/" class="back-link">← Back to feed</a>
+  <app-load-error what="This post" [message]="error.message" (retry)="post.reload()" />
+} @else if (post.hasValue()) {
+  @let current = post.value();
+  <a [routerLink]="['/posts', current.id]" class="back-link">← Back to post</a>
+  <h1 class="page-title">Edit post</h1>
+  <app-post-form
+    submitLabel="Save changes"
+    [fixedAuthor]="current.author"
+    [initial]="{ title: current.title, body: current.body }"
+    [saving]="saving()"
+    [saveError]="saveError()"
+    (save)="saveChanges(current.id, $event)"
+    (cancel)="cancel(current.id)"
+  />
+} @else {
+  <p class="panel" role="status">Loading post…</p>
+}
